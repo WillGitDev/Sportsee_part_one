@@ -1,5 +1,6 @@
 import Image from "next/image";
 import styles from "./page.module.css";
+import { login } from "@/cookies/auth";
 
 export default function Home() {
   return (
@@ -10,10 +11,10 @@ export default function Home() {
             <h2 className={styles.textLogo}>SPORTSEE</h2>
           </div>
           <div className={styles.formContainer}>
-            <form className={styles.form}>
+            <form className={styles.form} action={login}>
               <h1 className={styles.title}>
                 Transformez
-                <br /> vos stasts en résultats
+                <br /> vos stats en résultats
               </h1>
               <p className={styles.connectionText}>Se connecter</p>
               <div>
@@ -64,4 +65,8 @@ export default function Home() {
       </div>
     </main>
   );
+}
+
+function Auth({ mail, password }) {
+  login(data.token);
 }

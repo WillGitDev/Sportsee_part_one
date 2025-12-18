@@ -1,5 +1,5 @@
 import styles from "./profile.module.css";
-import Profile from "@components/Profile";
+import Profile from "@/components/Profil";
 import Statistics from "@components/Statistics";
 import UserNameInfo from "@components/UserNameInfo";
 import data from "@/data/mockedData.json";

@@ -1,4 +1,8 @@
+"use client";
+
 import styles from "./header.module.css";
+import Link from "next/link";
+import { logout } from "@/cookies/auth.js";
 
 export default function Header() {
   return (
@@ -8,12 +12,21 @@ export default function Header() {
       </div>
       <nav className={styles.nav}>
         <ul className={styles.ul}>
-          <li className={styles.li}>Dashboard</li>
+          <li className={styles.li}>
+            <Link href="/dashboard">Dashboard</Link>{" "}
+          </li>
           <li className={styles.li}>Coach</li>
-          <li className={styles.li}>Mon profil</li>
+          <li className={styles.li}>
+            <Link href="/profil">Mon profil</Link>
+          </li>
           <li className={styles.li}>|</li>
           <li className={`${styles.li} ${styles.deconnection}`}>
-            Se déconnecter
+            <button
+              className={styles.logout}
+              onClick={async () => await logout()}
+            >
+              Se déconnecter
+            </button>
           </li>
         </ul>
       </nav>

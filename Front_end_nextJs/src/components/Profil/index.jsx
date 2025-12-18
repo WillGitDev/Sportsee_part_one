@@ -1,4 +1,4 @@
-import styles from "./profile.module.css";
+import styles from "./profil.module.css";
 
 export default function Profil({ age, genre, taille, poids }) {
   return (

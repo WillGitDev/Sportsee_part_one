@@ -35,3 +35,9 @@
 .deconnection {
   color: var(--color-darkblue);
 }
+
+.logout {
+  background-color: white;
+  color: var(--color-darkblue);
+  font-size: 16px;
+}
