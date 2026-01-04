@@ -1,15 +1,22 @@
+import { min, max, differenceInDays } from "date-fns";
+/**
+ * Fonction pour avoir le nombre de jour de repos.
+ * @param {string[]} tabOfRests - Le tableau d'activité contenant
+ * les dates de jours de sport effectué par l'utilsateur.
+ * @returns {number} Le nombre de jours de repos.
+ */
 export default function nbrOfDaysRest(tabOfRests) {
-  const activeDaysSet = new Set(
-    tabOfRests.map((element) => {
-      return new Date(element.date).getTime();
-    })
-  );
+    const activeDaysSet = new Set(
+        tabOfRests.map((element) => {
+            return new Date(element.date).getTime();
+        }),
+    );
 
-  const firstDay = new Date(Math.min(...activeDaysSet));
-  const lastDay = new Date(Math.max(...activeDaysSet));
+    const firstDay = min(activeDaysSet);
+    const lastDay = max(activeDaysSet);
 
-  const diffTime = Math.abs(lastDay - firstDay);
-  const totalDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24)) + 1;
+    // On rajoute +1 pour pour compter le jour de début et de fin.
+    const totalDays = differenceInDays(lastDay, firstDay) + 1;
 
-  return totalDays - activeDaysSet.size;
+    return totalDays - activeDaysSet.size;
 }

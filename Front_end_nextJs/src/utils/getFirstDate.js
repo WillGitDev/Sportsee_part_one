@@ -1,7 +1,14 @@
-export default function getFirstDate(date) {
-  const dates = date.map((date) => {
-    return new Date(date.date).getTime();
-  });
+import { min, parseISO } from "date-fns";
 
-  return new Date(Math.min(...dates));
+/**
+ * Récupérer le premier jour à partir d'un tableau d'activité.
+ * @param {string[]} activities - Un tableau des activités.
+ * @returns {number} Le premier jour dans le tableau.
+ */
+export default function getFirstDate(activities) {
+    const dates = activities.map((activity) => {
+        return parseISO(activity.date);
+    });
+
+    return min(dates);
 }
