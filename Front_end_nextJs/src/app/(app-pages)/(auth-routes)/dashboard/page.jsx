@@ -6,13 +6,15 @@ import userHeartRateMapper from "@/services/mappers/userHeartRateMapper";
 import userKmMapper from "@/services/mappers/userKmMapper";
 import data from "@/data/mockedData";
 import GraphWrapperKm from "@components/GraphWrapperKm";
+import GraphRunWrapper from "@components/GraphRunWrapper";
+import test from "@/utils/test";
 
 export default function Dashboard({ children }) {
-    const activitiesInfo = userActivityMapper(data);
+    const activitiesInfo = userActivityMapper(data.apiUserActivity);
     const heartRate = userHeartRateMapper(data);
     const kmData = userKmMapper(data);
     //console.log("Les données de kmData", kmData);
-
+    test();
     return (
         <div className={styles.container}>
             <div className={styles.containerIaLaunch}>
@@ -57,6 +59,9 @@ export default function Dashboard({ children }) {
             <div className={styles.containerGraph}>
                 <GraphWrapperKm kmData={kmData} />
                 <GraphWrapper heartRate={heartRate} />
+            </div>
+            <div className={styles.thisWeekContainer}>
+                <GraphRunWrapper userActivity={data.apiUserActivity} />
             </div>
         </div>
     );

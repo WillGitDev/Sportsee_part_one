@@ -6,6 +6,7 @@ import {
     min,
     max,
     parseISO,
+    startOfToday,
 } from "date-fns";
 
 /**
@@ -19,6 +20,7 @@ export default function dataByWeeks(data, isKm = false) {
     if (!data || data.length == 0) return [];
 
     const dates = data.map((activitie) => parseISO(activitie.date));
+
     // Un dictionnaire pour stocker chaque activité en fonction de sa date.
     const dataMap = new Map(
         data.map((activitie) => [activitie.date, activitie]),
@@ -26,7 +28,7 @@ export default function dataByWeeks(data, isKm = false) {
     const mondays = eachWeekOfInterval(
         {
             start: min(dates),
-            end: max(dates),
+            end: startOfToday(),
         },
         { weekStartsOn: 1 },
     ); // Ici 1 c'est pour lundi.

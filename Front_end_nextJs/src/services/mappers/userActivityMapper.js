@@ -3,22 +3,22 @@ import getFirstDate from "@/utils/getFirstDate";
 
 /**
  * Mappe les informations de l'utilisateur.
- * @param {Object[]} data - Les données de l'utilsateur.
+ * @param {Object[]} apiUserActivity - Les données de l'utilisateur.
  * @returns {Object} Retourne les activitées, le total de calorie
  * brulé, le nombre de jour de repos et la date de départ.
  */
-export default function userActivityMapper(data) {
+export default function userActivityMapper(apiUserActivity) {
     let totalCalBurn = 0;
     let activities = [];
-    const daysRest = nbrOfDaysRest(data.apiUserActivity);
-    const startWithDate = getFirstDate(data.apiUserActivity);
+    const daysRest = nbrOfDaysRest(apiUserActivity);
+    const startWithDate = getFirstDate(apiUserActivity);
     const startWith = startWithDate.toLocaleDateString("fr-FR", {
         day: "numeric",
         month: "long",
         year: "numeric",
     });
 
-    data.apiUserActivity.forEach((element) => {
+    apiUserActivity.forEach((element) => {
         totalCalBurn += element.caloriesBurned;
 
         activities.push({
