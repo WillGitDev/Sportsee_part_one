@@ -6,6 +6,8 @@ import { min, max, differenceInDays } from "date-fns";
  * @returns {number} Le nombre de jours de repos.
  */
 export default function nbrOfDaysRest(tabOfRests) {
+    if (!tabOfRests) return;
+
     const activeDaysSet = new Set(
         tabOfRests.map((element) => {
             return new Date(element.date).getTime();

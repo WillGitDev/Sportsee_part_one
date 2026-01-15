@@ -1,0 +1,17 @@
+.containerError {
+    position: fixed;
+    top: 40%;
+    left: 40%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 20%;
+    width: 20%;
+    background-color: rgb(240, 176, 176);
+    border-radius: 20px;
+}
+
+.textError {
+    font-size: 20px;
+    color: var(--color-darkblue);
+}

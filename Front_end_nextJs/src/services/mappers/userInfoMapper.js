@@ -6,17 +6,17 @@ import { normalizeHeight } from "@/utils/normalizeHeight";
  * @param {Object[]} data - Les informations de l'utilisateur.
  * @returns {Object} Les données normalisé.
  */
-export default function userInfoMapper(data) {
+export default function userInfoMapper(apiUserInfo) {
     return {
-        firstName: data.apiUserInfo.profile.firstName,
-        lastName: data.apiUserInfo.profile.lastName,
-        createdAt: normalizeData(data.apiUserInfo.profile.createdAt),
-        age: data.apiUserInfo.profile.age,
-        weight: data.apiUserInfo.profile.weight,
-        height: normalizeHeight(data.apiUserInfo.profile.height),
-        profilePicture: data.apiUserInfo.profile.profilePicture,
-        totalDistance: data.apiUserInfo.statistics.totalDistance,
-        totalSessions: data.apiUserInfo.statistics.totalSessions,
-        totalDuration: data.apiUserInfo.statistics.totalDuration,
+        firstName: apiUserInfo.profile.firstName,
+        lastName: apiUserInfo.profile.lastName,
+        createdAt: normalizeData(apiUserInfo.profile.createdAt),
+        age: apiUserInfo.profile.age,
+        weight: apiUserInfo.profile.weight,
+        height: normalizeHeight(apiUserInfo.profile.height),
+        profilePicture: apiUserInfo.profile.profilePicture,
+        totalDistance: apiUserInfo.statistics.totalDistance,
+        totalSessions: apiUserInfo.statistics.totalSessions,
+        totalDuration: apiUserInfo.statistics.totalDuration,
     };
 }

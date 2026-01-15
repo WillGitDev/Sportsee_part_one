@@ -8,6 +8,8 @@ import getFirstDate from "@/utils/getFirstDate";
  * brulé, le nombre de jour de repos et la date de départ.
  */
 export default function userActivityMapper(apiUserActivity) {
+    if (!apiUserActivity) return;
+
     let totalCalBurn = 0;
     let activities = [];
     const daysRest = nbrOfDaysRest(apiUserActivity);
