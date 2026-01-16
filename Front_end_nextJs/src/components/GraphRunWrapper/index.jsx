@@ -9,40 +9,51 @@ import { parseISO } from "date-fns";
 import { fr } from "date-fns/locale";
 
 export default function GraphRunWrapper({ userActivity }) {
-    const allWeeks = dataByWeek(userActivity);
+    const allWeeks = dataByWeek(userActivity.activities);
     console.log("Les données :", allWeeks);
-    const targetDate = "2025-09-03";
-    //const targetDate = format(startOfToday(), "yyyy-MM-dd");
+
+    // const targetDate = "2025-09-03";
+    const targetDate = format(startOfToday(), "yyyy-MM-dd");
     //console.log(targetDate);
-    const weekFound = allWeeks.find((week) =>
-        week.some((day) => day.date === targetDate),
-    );
+    const weekFound =
+        allWeeks.find((week) => week.some((day) => day.date === targetDate)) ||
+        [];
     console.log("La semaine trouvée", weekFound);
 
+    const hasData = weekFound.length > 0;
     //debugger;
-    const activity = weekFound.reduce((acc, element) => {
-        return element.isMissing ? acc - 1 : acc;
-    }, 7);
+    const activity = hasData
+        ? weekFound.reduce((acc, element) => {
+              return element.isMissing ? acc - 1 : acc;
+          }, 7)
+        : 0;
 
-    const sumDuration = weekFound.reduce((acc, element) => {
-        return acc + (element.duration || 0);
-    }, 0);
+    const sumDuration = hasData
+        ? weekFound.reduce((acc, element) => {
+              return acc + (element.duration || 0);
+          }, 0)
+        : 0;
 
-    const sumDistance = weekFound.reduce((acc, element) => {
-        return acc + (element.distance || 0);
-    }, 0);
+    const sumDistance = hasData
+        ? weekFound.reduce((acc, element) => {
+              return acc + (element.distance || 0);
+          }, 0)
+        : 0;
 
-    const firstDay = weekFound[0];
-    const lastDay = weekFound[weekFound.length - 1];
+    let currentWeek = "Aucune donnée pour cette semaine";
+    if (hasData) {
+        const firstDay = weekFound[0];
+        const lastDay = weekFound[weekFound.length - 1];
 
-    const startDate = format(parseISO(firstDay.date), "dd/MM/yyyy", {
-        locale: fr,
-    });
-    const lastDate = format(parseISO(lastDay.date), "dd/MM/yyyy", {
-        locale: fr,
-    });
-    // La semaine en cours
-    const currentWeek = `Du ${startDate} au ${lastDate}`;
+        const startDate = format(parseISO(firstDay.date), "dd/MM/yyyy", {
+            locale: fr,
+        });
+        const lastDate = format(parseISO(lastDay.date), "dd/MM/yyyy", {
+            locale: fr,
+        });
+        // La semaine en cours
+        currentWeek = `Du ${startDate} au ${lastDate}`;
+    }
 
     return (
         <>

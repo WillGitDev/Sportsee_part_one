@@ -35,7 +35,10 @@ export default function GraphKm({ kmData }) {
                         vertical={false}
                         stroke="#d8c2c2ff"
                     />
-                    <XAxis dataKey="weekNumber" />
+                    <XAxis
+                        dataKey="weekNumber"
+                        tickFormatter={(value) => `S ${value}`}
+                    />
                     <YAxis
                         tickFormatter={(value) => `${value} km`}
                         axisLine={false}

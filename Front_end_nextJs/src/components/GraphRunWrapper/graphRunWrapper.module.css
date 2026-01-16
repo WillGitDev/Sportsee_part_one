@@ -1,6 +1,7 @@
 .containerGraphRun {
     display: flex;
     gap: 30px;
+    margin-bottom: 100px;
 }
 
 .containerGraph {

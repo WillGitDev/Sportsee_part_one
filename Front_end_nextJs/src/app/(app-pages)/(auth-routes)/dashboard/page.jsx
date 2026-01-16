@@ -1,21 +1,45 @@
+"use client";
 import styles from "./dashboard.module.css";
 import Image from "next/image";
 import GraphWrapper from "@components/GraphWrapper";
-import userActivityMapper from "@/services/mappers/userActivityMapper";
-import userHeartRateMapper from "@/services/mappers/userHeartRateMapper";
-import userKmMapper from "@/services/mappers/userKmMapper";
 import data from "@/data/mockedData";
 import GraphWrapperKm from "@components/GraphWrapperKm";
 import GraphRunWrapper from "@components/GraphRunWrapper";
-import useUserActivity from "@/utils/hooks/useUserActivity";
+import { useContext } from "react";
+import { userContext } from "@/contexts/UserContext";
+import Loading from "@components/Loading";
+import ErrorBox from "@components/ErrorBox";
 
 export default function Dashboard({ children }) {
-    const activitiesInfo = userActivityMapper(data.apiUserActivity);
+    // const activitiesInfo = userActivityMapper(data.apiUserActivity);
+    // const heartRate = userHeartRateMapper(data.apiUserActivity);
+    // const kmData = userKmMapper(data.apiUserActivity);
+    const {
+        userInfo,
+        userActivity,
+        userHeartRate,
+        userKm,
+        isLoading,
+        isError,
+    } = useContext(userContext);
 
-    const heartRate = userHeartRateMapper(data);
-    const kmData = userKmMapper(data);
-    //console.log("Les données de kmData", kmData);
+    if (isLoading) {
+        return <Loading isLoading={true} />;
+    }
 
+    if (isError || !userInfo || !userActivity || !userHeartRate || !userKm) {
+        return (
+            <ErrorBox
+                isError={true}
+                text={"Erreur lors de la récupération des données"}
+            />
+        );
+    }
+
+    const activitiesInfo = userActivity;
+    const heartRate = userHeartRate;
+    const kmData = userKm;
+    console.log(userInfo.profilePicture);
     return (
         <div className={styles.container}>
             <div className={styles.containerIaLaunch}>
@@ -35,10 +59,11 @@ export default function Dashboard({ children }) {
             <div className={styles.nameInfo}>
                 <Image
                     className={styles.imgNext}
-                    src="/images/background_picture.png"
+                    src={userInfo.profilePicture}
                     width={100}
                     height={120}
                     alt="Photo de profil"
+                    unoptimized
                 />
                 <div className={styles.contentName}>
                     <p className={styles.name}>Clara Dupont</p>
@@ -62,7 +87,7 @@ export default function Dashboard({ children }) {
                 <GraphWrapper heartRate={heartRate} />
             </div>
             <div className={styles.thisWeekContainer}>
-                <GraphRunWrapper userActivity={data.apiUserActivity} />
+                <GraphRunWrapper userActivity={activitiesInfo} />
             </div>
         </div>
     );

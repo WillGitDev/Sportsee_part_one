@@ -10,8 +10,8 @@ export default function GraphRun({ completed = 4 }) {
             name: "restants",
             value: remaining,
             color: "#B5C0FF",
-            offSetX: 40,
-            offSetY: 20,
+            offSetX: 10,
+            offSetY: 0,
         },
         {
             name: "réalisées",

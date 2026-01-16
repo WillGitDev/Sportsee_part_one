@@ -3,8 +3,8 @@
  * @param {Object[]} data - Les données utilisateurs
  * @returns {Object[]} Les données mapper
  */
-export default function userKmMapper(data) {
-    return data.apiUserActivity.map((element) => {
+export default function userKmMapper(apiUserActivity) {
+    return apiUserActivity.map((element) => {
         return {
             date: element.date,
             km: element.distance,

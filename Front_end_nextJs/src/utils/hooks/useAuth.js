@@ -10,10 +10,13 @@ export default function useAuth() {
     const [token, setToken] = useState(null);
     const [userId, setUserId] = useState(null);
     const [isLoading, setIsLoading] = useState(false);
-    const [error, setError] = useState(null);
+    const [isError, setIsError] = useState(null);
+    const [isUnauthorized, setIsUnauthorized] = useState(false);
 
     async function login(url, name, password) {
         setIsLoading(true);
+        setIsUnauthorized(false);
+        setIsError(false);
         try {
             const response = await fetch(`${path}${url}`, {
                 method: "POST",
@@ -24,8 +27,15 @@ export default function useAuth() {
                 }),
             });
             if (!response.ok) {
-                throw new Error("Identifiant/mot de passe incorrect.");
+                if (response.status === 401) {
+                    setIsUnauthorized(true);
+                    throw new Error(
+                        "Le mot de passe/identifiant est incorrect",
+                    );
+                }
+                throw new Error("Une erreur s'est produite");
             }
+
             const data = await response.json();
             setUserId(data.userId);
             setToken(data.token);
@@ -33,11 +43,11 @@ export default function useAuth() {
             router.push("/dashboard");
         } catch (error) {
             console.error("Erreur api : ", error);
-            setError(error.message);
+            setIsError(true);
         } finally {
             setIsLoading(false);
         }
     }
 
-    return { login, userId, token, isLoading, error };
+    return { login, userId, token, isLoading, isError, isUnauthorized };
 }
