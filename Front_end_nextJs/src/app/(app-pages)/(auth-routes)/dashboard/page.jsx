@@ -52,7 +52,7 @@ export default function Dashboard({ children }) {
                     Posez vos questions sur votre programme, vos performances ou
                     vos objectifs.
                 </p>
-                <button className={styles.buttonIaLaunch}>
+                <button className={`${styles.buttonIaLaunch} buttonAnimate`}>
                     Lancer une conversation
                 </button>
             </div>

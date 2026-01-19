@@ -29,7 +29,7 @@ a {
     text-decoration: none;
 }
 
-button {
+.buttonAnimate {
     border: none;
     border-radius: 10px;
     background-color: var(--color-darkblue);
@@ -37,7 +37,7 @@ button {
     transition: background-color 0.4s ease-in-out;
 }
 
-button:hover {
+.buttonAnimate:hover {
     background-color: var(--color-lightblue);
 }
 

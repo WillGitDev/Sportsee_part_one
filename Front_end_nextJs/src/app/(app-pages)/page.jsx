@@ -80,10 +80,13 @@ export default function Home() {
                                         }}
                                     />
                                 </div>
-                                <button type="submit" className={styles.submit}>
+                                <button
+                                    type="submit"
+                                    className={`${styles.submit} buttonAnimate`}
+                                >
                                     Se connecter
                                 </button>
-                                <p className={styles.textForgot}>
+                                <p className={`${styles.textForgot}`}>
                                     Mot de passe oublié ?
                                 </p>
                             </form>

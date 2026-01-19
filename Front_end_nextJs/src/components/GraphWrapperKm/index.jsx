@@ -78,7 +78,7 @@ export default function GraphWrapperKm({ kmData }) {
                     </h2>
                     <div className={styles.containerNav}>
                         <button
-                            className="buttonGraph"
+                            className="buttonGraph buttonAnimate"
                             disabled={weekOffset <= 0}
                             onClick={() => setWeekOffset((prev) => prev - 1)}
                         >
@@ -88,7 +88,7 @@ export default function GraphWrapperKm({ kmData }) {
                         <span className={styles.weekLabel}>{weekLabel}</span>
 
                         <button
-                            className="buttonGraph"
+                            className="buttonGraph buttonAnimate"
                             disabled={weekOffset >= maxOffset}
                             onClick={() => setWeekOffset((prev) => prev + 1)}
                         >
