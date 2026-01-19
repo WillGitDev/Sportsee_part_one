@@ -2,8 +2,9 @@
 
 import { useState, useEffect } from "react";
 
+const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL;
+
 export default function useUserInfo(url, token) {
-    const path = "http://localhost:8000";
     const [dataUserInfo, setDataUserInfo] = useState({});
     const [isLoading, setIsLoading] = useState(true);
     const [isError, setIsError] = useState(false);
@@ -21,7 +22,7 @@ export default function useUserInfo(url, token) {
         async function fetchData() {
             setIsLoading(true);
             try {
-                const response = await fetch(`${path}${url}`, {
+                const response = await fetch(`${API_BASE_URL}${url}`, {
                     method: "GET",
                     headers: { Authorization: `Bearer ${token}` },
                 });

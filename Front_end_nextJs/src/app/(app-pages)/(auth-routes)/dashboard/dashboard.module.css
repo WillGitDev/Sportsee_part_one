@@ -49,6 +49,12 @@
 .imgNext {
     border-radius: 10px;
     margin-left: 20px;
+    transition: transform 0.3s ease-in-out;
+}
+
+.imgNext:hover {
+    transform: scale(1.1);
+    cursor: pointer;
 }
 
 .containerDistance {

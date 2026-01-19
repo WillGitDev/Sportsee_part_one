@@ -10,8 +10,7 @@ export default function Home() {
     const url = "/api/login";
     const [mail, setMail] = useState("");
     const [password, setPassword] = useState("");
-    const { login, userId, token, isLoading, error, isUnauthorized } =
-        useAuth();
+    const { login, userId, token, isLoading, error, isAuthorized } = useAuth();
 
     async function handleSubmit(e) {
         e.preventDefault();
@@ -21,9 +20,9 @@ export default function Home() {
     console.log(userId, token, isLoading, error);
     return (
         <>
-            {isUnauthorized && (
+            {isAuthorized && (
                 <ErrorBox
-                    isError={isUnauthorized}
+                    isError={isAuthorized}
                     text="Combinaisons mot de passe / identifiant invalide"
                 />
             )}

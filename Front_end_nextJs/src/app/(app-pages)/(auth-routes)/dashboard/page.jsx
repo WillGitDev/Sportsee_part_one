@@ -66,7 +66,9 @@ export default function Dashboard({ children }) {
                     unoptimized
                 />
                 <div className={styles.contentName}>
-                    <p className={styles.name}>Clara Dupont</p>
+                    <p
+                        className={styles.name}
+                    >{`${userInfo.firstName} ${userInfo.lastName}`}</p>
                     <p>Membre depuis le 14 juin 2023</p>
                 </div>
                 <div className={styles.containerDistance}>

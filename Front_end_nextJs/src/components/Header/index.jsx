@@ -4,6 +4,7 @@ import styles from "./header.module.css";
 import Link from "next/link";
 import { logout } from "@/cookies/auth.js";
 import { useRouter } from "next/navigation";
+import Icone from "@components/Icone";
 
 export default function Header() {
     const router = useRouter();
@@ -14,6 +15,7 @@ export default function Header() {
     return (
         <header className={styles.container}>
             <div className={styles.containerLogo}>
+                <Icone />
                 <p className={styles.textLogo}>SPORTSEE</p>
             </div>
             <nav className={styles.nav}>

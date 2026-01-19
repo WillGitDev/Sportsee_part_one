@@ -3,22 +3,22 @@
 import { useState } from "react";
 import { setCookie } from "@/cookies/auth";
 import { useRouter } from "next/navigation";
+const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL;
 
 export default function useAuth() {
     const router = useRouter();
-    const path = "http://localhost:8000";
     const [token, setToken] = useState(null);
     const [userId, setUserId] = useState(null);
     const [isLoading, setIsLoading] = useState(false);
     const [isError, setIsError] = useState(null);
-    const [isUnauthorized, setIsUnauthorized] = useState(false);
+    const [isAuthorized, setisAuthorized] = useState(false);
 
     async function login(url, name, password) {
         setIsLoading(true);
-        setIsUnauthorized(false);
+        setisAuthorized(false);
         setIsError(false);
         try {
-            const response = await fetch(`${path}${url}`, {
+            const response = await fetch(`${API_BASE_URL}${url}`, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({
@@ -28,7 +28,7 @@ export default function useAuth() {
             });
             if (!response.ok) {
                 if (response.status === 401) {
-                    setIsUnauthorized(true);
+                    setisAuthorized(true);
                     throw new Error(
                         "Le mot de passe/identifiant est incorrect",
                     );
@@ -49,5 +49,5 @@ export default function useAuth() {
         }
     }
 
-    return { login, userId, token, isLoading, isError, isUnauthorized };
+    return { login, userId, token, isLoading, isError, isAuthorized };
 }
