@@ -1,5 +1,5 @@
 "use client";
-import useFetch from "@/utils/hooks/useUserInfo";
+import useFetch from "@/hooks/useUserInfo";
 import Cookies from "js-cookie";
 import userInfoMapper from "@/services/mappers/userInfoMapper";
 

@@ -11,6 +11,7 @@ export default function userActivityMapper(apiUserActivity) {
     if (!apiUserActivity) return;
 
     let totalCalBurn = 0;
+    let totalDuration = 0;
     let activities = [];
     const daysRest = nbrOfDaysRest(apiUserActivity);
     const startWithDate = getFirstDate(apiUserActivity);
@@ -22,6 +23,7 @@ export default function userActivityMapper(apiUserActivity) {
 
     apiUserActivity.forEach((element) => {
         totalCalBurn += element.caloriesBurned;
+        totalDuration += element.duration;
 
         activities.push({
             date: element.date,
@@ -35,6 +37,8 @@ export default function userActivityMapper(apiUserActivity) {
             caloriesBurned: element.caloriesBurned,
         });
     });
-
-    return { activities, totalCalBurn, daysRest, startWith };
+    const hoursDuration = Math.floor(totalDuration / 60);
+    const minutesDuration = totalDuration % 60;
+    const totalDurationObj = { hoursDuration, minutesDuration };
+    return { activities, totalCalBurn, daysRest, startWith, totalDurationObj };
 }

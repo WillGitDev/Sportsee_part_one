@@ -3,11 +3,12 @@
 import styles from "./header.module.css";
 import Link from "next/link";
 import { logout } from "@/cookies/auth.js";
-import { useRouter } from "next/navigation";
+import { useRouter, usePathname } from "next/navigation";
 import Icone from "@components/Icone";
 
 export default function Header() {
     const router = useRouter();
+    const pathname = usePathname();
     function handleLogout() {
         logout();
         router.push("/");
@@ -21,11 +22,27 @@ export default function Header() {
             <nav className={styles.nav}>
                 <ul className={styles.ul}>
                     <li className={styles.li}>
-                        <Link href="/dashboard">Dashboard</Link>{" "}
+                        <Link
+                            href="/dashboard"
+                            className={
+                                pathname === "/dashboard"
+                                    ? styles.activeLink
+                                    : ""
+                            }
+                        >
+                            Dashboard
+                        </Link>
                     </li>
                     <li className={styles.li}>Coach</li>
                     <li className={styles.li}>
-                        <Link href="/profil">Mon profil</Link>
+                        <Link
+                            href="/profil"
+                            className={
+                                pathname === "/profil" ? styles.activeLink : ""
+                            }
+                        >
+                            Mon profil
+                        </Link>
                     </li>
                     <li className={styles.li}>|</li>
                     <li className={`${styles.li} ${styles.deconnection}`}>

@@ -43,4 +43,9 @@
     background-color: white;
     color: var(--color-darkblue);
     font-size: 16px;
+    border: none;
+}
+
+.activeLink {
+    color: var(--color-darkblue);
 }

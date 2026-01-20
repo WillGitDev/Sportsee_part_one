@@ -5,15 +5,18 @@ import GraphWrapper from "@components/GraphWrapper";
 import data from "@/data/mockedData";
 import GraphWrapperKm from "@components/GraphWrapperKm";
 import GraphRunWrapper from "@components/GraphRunWrapper";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { userContext } from "@/contexts/UserContext";
 import Loading from "@components/Loading";
 import ErrorBox from "@components/ErrorBox";
+import HandIcone from "@components/HandIcone";
 
-export default function Dashboard({ children }) {
+export default function Dashboard() {
+    // const userInfo = userInfoMapper(data.apiUserInfo);
     // const activitiesInfo = userActivityMapper(data.apiUserActivity);
     // const heartRate = userHeartRateMapper(data.apiUserActivity);
     // const kmData = userKmMapper(data.apiUserActivity);
+    const { userData } = useContext(userContext);
     const {
         userInfo,
         userActivity,
@@ -21,8 +24,8 @@ export default function Dashboard({ children }) {
         userKm,
         isLoading,
         isError,
-    } = useContext(userContext);
-
+    } = userData;
+    debugger;
     if (isLoading) {
         return <Loading isLoading={true} />;
     }
@@ -39,7 +42,7 @@ export default function Dashboard({ children }) {
     const activitiesInfo = userActivity;
     const heartRate = userHeartRate;
     const kmData = userKm;
-    console.log(userInfo.profilePicture);
+
     return (
         <div className={styles.container}>
             <div className={styles.containerIaLaunch}>
@@ -57,30 +60,29 @@ export default function Dashboard({ children }) {
                 </button>
             </div>
             <div className={styles.nameInfo}>
-                <Image
-                    className={styles.imgNext}
-                    src={userInfo.profilePicture}
-                    width={100}
-                    height={120}
-                    alt="Photo de profil"
-                    unoptimized
-                />
+                <div className={styles.containerImg}>
+                    <Image
+                        className={styles.imgNext}
+                        src={userInfo.profilePicture}
+                        width={100}
+                        height={120}
+                        alt="Photo de profil"
+                        unoptimized
+                    />
+                </div>
                 <div className={styles.contentName}>
                     <p
                         className={styles.name}
                     >{`${userInfo.firstName} ${userInfo.lastName}`}</p>
-                    <p>Membre depuis le 14 juin 2023</p>
+                    <p>Membre depuis le {activitiesInfo.startWith}</p>
                 </div>
                 <div className={styles.containerDistance}>
                     <p className={styles.textDistance}>
                         Distance totale parcourue
                     </p>
                     <div className={styles.nbrDistance}>
-                        <img
-                            src="/icone/drapeau.svg"
-                            alt="icone d'une main tenant un drapeau"
-                        />
-                        <p>312 km</p>
+                        <HandIcone />
+                        <p>{userInfo.totalDistance ?? ""} km</p>
                     </div>
                 </div>
             </div>

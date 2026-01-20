@@ -12,9 +12,8 @@ import { userContext } from "@/contexts/UserContext";
 export default function ProfilPage() {
     // const userInfo = userInfoMapper(data.apiUserInfo);
     // const userActivity = userActivityMapper(data.apiUserActivity);
-
-    const { userInfo, userActivity, isLoading, isError } =
-        useContext(userContext);
+    const { userData } = useContext(userContext);
+    const { userInfo, userActivity, isLoading, isError } = userData;
     if (isLoading) {
         return <Loading isLoading={true} />;
     }
@@ -26,7 +25,7 @@ export default function ProfilPage() {
             />
         );
     }
-
+    console.log(`Le fichier userActivity contient : `, userActivity);
     return (
         <div className={styles.container}>
             <div className={styles.infoUser}>
@@ -38,14 +37,14 @@ export default function ProfilPage() {
                 />
                 <Profile
                     age={userInfo.age}
-                    genre="Femme"
+                    genre={userInfo.gender}
                     taille={userInfo.height}
                     poids={userInfo.weight}
                 />
             </div>
             <Statistics
                 dateStart={userActivity.startWith}
-                timeTotal={"2"}
+                timeTotal={userActivity.totalDurationObj}
                 distanceTotal={userInfo.totalDistance}
                 nbrSessions={userInfo.totalSessions}
                 calBurn={userActivity.totalCalBurn}

@@ -1,3 +1,4 @@
+"use client";
 import Cookies from "js-cookie";
 import data from "@/data/mockedData";
 

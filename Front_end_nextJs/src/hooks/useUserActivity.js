@@ -9,20 +9,10 @@ export default function useUserActivity(url, token, startWeek, endWeek) {
     const [isLoading, setIsLoading] = useState(false);
 
     useEffect(() => {
-        if (!url) {
-            console.error("L'url n'est pas renseigner");
-            return;
-        }
-        if (!token) {
-            console.error("Le token est vide");
-            return;
-        }
-        if (!startWeek) {
-            console.error("Il faut renseigner la date de départ");
-            return;
-        }
-        if (!endWeek) {
-            console.error("Il faut renseigner la date de fin");
+        if (!url || !token || !startWeek || !endWeek) {
+            console.warn(
+                "Données manquantes pour la récupération des données d'activitées",
+            );
             return;
         }
 

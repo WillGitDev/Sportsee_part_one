@@ -46,14 +46,19 @@
     height: 170px;
 }
 
-.imgNext {
+.containerImg {
+    overflow: hidden;
     border-radius: 10px;
     margin-left: 20px;
+}
+
+.imgNext {
+    border-radius: 10px;
     transition: transform 0.3s ease-in-out;
 }
 
 .imgNext:hover {
-    transform: scale(1.1);
+    transform: scale(1.2);
     cursor: pointer;
 }
 

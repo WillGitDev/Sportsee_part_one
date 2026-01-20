@@ -5,8 +5,8 @@ export default function Icone() {
         <div className={styles.container}>
             <svg
                 width="3"
-                height="16"
-                viewBox="0 0 3 16"
+                height="17"
+                viewBox="0 0 3 17"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
             >
@@ -17,16 +17,17 @@ export default function Icone() {
                     rx="1.5"
                     fill="url(#paint0_linear_8818_185)"
                 />
-                <rect
-                    x="3"
-                    y="11"
-                    width="3"
-                    height="11"
-                    rx="1.5"
-                    transform="rotate(180 3 11)"
-                    fill="url(#paint1_linear_8818_185)"
-                    // className={styles.barOrange}
-                />
+                <g className={styles.orangeBar}>
+                    <rect
+                        x="3"
+                        y="11"
+                        width="3"
+                        height="11"
+                        rx="1.5"
+                        transform="rotate(180 3 11)"
+                        fill="url(#paint1_linear_8818_185)"
+                    />
+                </g>
                 <defs>
                     <linearGradient
                         id="paint0_linear_8818_185"
@@ -60,21 +61,23 @@ export default function Icone() {
                 xmlns="http://www.w3.org/2000/svg"
             >
                 <rect
-                    y="5.65625"
+                    y="7.65625"
                     width="3"
-                    height="15"
+                    height="13"
                     rx="1.5"
                     fill="url(#paint0_linear_8818_173)"
                 />
-                <rect
-                    x="3"
-                    y="14"
-                    width="3"
-                    height="14"
-                    rx="1.5"
-                    transform="rotate(180 3 14)"
-                    fill="url(#paint1_linear_8818_173)"
-                />
+                <g className={styles.orangeBar}>
+                    <rect
+                        x="3"
+                        y="14"
+                        width="3"
+                        height="14"
+                        rx="1.5"
+                        transform="rotate(180 3 14)"
+                        fill="url(#paint1_linear_8818_173)"
+                    />
+                </g>
                 <defs>
                     <linearGradient
                         id="paint0_linear_8818_173"
@@ -102,8 +105,8 @@ export default function Icone() {
             </svg>
             <svg
                 width="3"
-                height="15"
-                viewBox="0 0 3 15"
+                height="19"
+                viewBox="0 0 3 19"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
             >
@@ -114,15 +117,17 @@ export default function Icone() {
                     rx="1.5"
                     fill="url(#paint0_linear_8818_182)"
                 />
-                <rect
-                    x="3"
-                    y="12"
-                    width="3"
-                    height="12"
-                    rx="1.5"
-                    transform="rotate(180 3 12)"
-                    fill="url(#paint1_linear_8818_182)"
-                />
+                <g className={styles.orangeBar}>
+                    <rect
+                        x="3"
+                        y="12"
+                        width="3"
+                        height="12"
+                        rx="1.5"
+                        transform="rotate(180 3 12)"
+                        fill="url(#paint1_linear_8818_182)"
+                    />
+                </g>
                 <defs>
                     <linearGradient
                         id="paint0_linear_8818_182"
@@ -158,19 +163,21 @@ export default function Icone() {
                 <rect
                     y="6"
                     width="3"
-                    height="9"
+                    height="7"
                     rx="1.5"
                     fill="url(#paint0_linear_8818_179)"
                 />
-                <rect
-                    x="3"
-                    y="9"
-                    width="3"
-                    height="9"
-                    rx="1.5"
-                    transform="rotate(180 3 9)"
-                    fill="url(#paint1_linear_8818_179)"
-                />
+                <g className={styles.orangeBar}>
+                    <rect
+                        x="3"
+                        y="9"
+                        width="3"
+                        height="9"
+                        rx="1.5"
+                        transform="rotate(180 3 9)"
+                        fill="url(#paint1_linear_8818_179)"
+                    />
+                </g>
                 <defs>
                     <linearGradient
                         id="paint0_linear_8818_179"
@@ -198,8 +205,8 @@ export default function Icone() {
             </svg>
             <svg
                 width="3"
-                height="18"
-                viewBox="0 0 3 18"
+                height="21"
+                viewBox="0 0 3 21"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
             >
@@ -210,15 +217,17 @@ export default function Icone() {
                     rx="1.5"
                     fill="url(#paint0_linear_8818_176)"
                 />
-                <rect
-                    x="3"
-                    y="14"
-                    width="3"
-                    height="14"
-                    rx="1.5"
-                    transform="rotate(180 3 14)"
-                    fill="url(#paint1_linear_8818_176)"
-                />
+                <g className={styles.orangeBar}>
+                    <rect
+                        x="3"
+                        y="14"
+                        width="3"
+                        height="14"
+                        rx="1.5"
+                        transform="rotate(180 3 14)"
+                        fill="url(#paint1_linear_8818_176)"
+                    />
+                </g>
                 <defs>
                     <linearGradient
                         id="paint0_linear_8818_176"

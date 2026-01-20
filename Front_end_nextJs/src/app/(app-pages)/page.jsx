@@ -3,10 +3,15 @@
 import Image from "next/image";
 import styles from "./page.module.css";
 import { useState } from "react";
-import useAuth from "@/utils/hooks/useAuth";
+import useAuth from "@/hooks/useAuth";
 import ErrorBox from "@components/ErrorBox";
+import { useContext } from "react";
+import { userContext } from "@/contexts/UserContext";
+import { getToken } from "@/cookies/auth";
+import Icone from "@components/Icone";
 
 export default function Home() {
+    const { setToken } = useContext(userContext);
     const url = "/api/login";
     const [mail, setMail] = useState("");
     const [password, setPassword] = useState("");
@@ -14,7 +19,9 @@ export default function Home() {
 
     async function handleSubmit(e) {
         e.preventDefault();
+        // debugger;
         await login(url, mail, password);
+        setToken(getToken());
     }
 
     console.log(userId, token, isLoading, error);
@@ -30,7 +37,10 @@ export default function Home() {
                 <div className={styles.contentContainer}>
                     <div className={styles.inputContainer}>
                         <div className={styles.logo}>
-                            <h2 className={styles.textLogo}>SPORTSEE</h2>
+                            <h2 className={styles.textLogo}>
+                                <Icone />
+                                SPORTSEE
+                            </h2>
                         </div>
                         <div className={styles.formContainer}>
                             <form

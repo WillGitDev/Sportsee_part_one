@@ -10,12 +10,8 @@ export default function useUserInfo(url, token) {
     const [isError, setIsError] = useState(false);
 
     useEffect(() => {
-        if (!url) {
-            console.error("L'url vide");
-            return;
-        }
-        if (!token) {
-            console.error("Token vide");
+        if (!url || !token) {
+            setIsLoading(false);
             return;
         }
 
@@ -32,7 +28,6 @@ export default function useUserInfo(url, token) {
                 const data = await response.json();
 
                 setDataUserInfo(data);
-                setIsLoading(false);
             } catch (error) {
                 console.error("erreur : ", error);
                 setIsError(true);

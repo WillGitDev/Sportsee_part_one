@@ -1,6 +1,7 @@
 import styles from "./loading.module.css";
 
-export default function Loading(isLoading) {
+export default function Loading({ isLoading }) {
+    // debugger;
     if (!isLoading) return;
     return (
         <div className={styles.containerLoading}>

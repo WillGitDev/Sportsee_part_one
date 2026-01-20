@@ -5,6 +5,7 @@
     width: 100vw;
     height: 40px;
     background-color: white;
+    padding: 0 200px;
 }
 
 .sportseeInc {
@@ -13,6 +14,7 @@
 
 .contentRight {
     display: flex;
+    align-items: center;
     gap: 20px;
     margin-right: 100px;
 }
