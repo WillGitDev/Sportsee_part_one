@@ -25,7 +25,7 @@ export default function Dashboard() {
         isLoading,
         isError,
     } = userData;
-    debugger;
+
     if (isLoading) {
         return <Loading isLoading={true} />;
     }
@@ -86,9 +86,14 @@ export default function Dashboard() {
                     </div>
                 </div>
             </div>
-            <div className={styles.containerGraph}>
-                <GraphWrapperKm kmData={kmData} />
-                <GraphWrapper heartRate={heartRate} />
+            <div className={styles.graph}>
+                <h2 className={styles.titleGraph}>
+                    Vos dernières performances
+                </h2>
+                <div className={styles.containerGraph}>
+                    <GraphWrapperKm kmData={kmData} />
+                    <GraphWrapper heartRate={heartRate} />
+                </div>
             </div>
             <div className={styles.thisWeekContainer}>
                 <GraphRunWrapper userActivity={activitiesInfo} />

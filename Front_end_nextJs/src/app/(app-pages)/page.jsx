@@ -19,12 +19,11 @@ export default function Home() {
 
     async function handleSubmit(e) {
         e.preventDefault();
-        // debugger;
+
         await login(url, mail, password);
         setToken(getToken());
     }
 
-    console.log(userId, token, isLoading, error);
     return (
         <>
             {isAuthorized && (

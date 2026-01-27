@@ -25,7 +25,7 @@ export default function ProfilPage() {
             />
         );
     }
-    console.log(`Le fichier userActivity contient : `, userActivity);
+
     return (
         <div className={styles.container}>
             <div className={styles.infoUser}>
